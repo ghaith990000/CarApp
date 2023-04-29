@@ -77,9 +77,9 @@ export class AuthService {
         console.log(this.loggedRole);
 
         if(this.loggedRole === "admin"){
-          this.navCtrl.navigateForward('/tabs/tab2');
+          this.navCtrl.navigateForward('/admin');
         }else if(this.loggedRole === "customer"){
-          this.navCtrl.navigateForward('/admin/tabs/tab1');
+          this.navCtrl.navigateForward('/tabs/tab1');
         }
       }
     )

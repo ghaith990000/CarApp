@@ -9,6 +9,9 @@ export class Tab1Page implements OnInit {
 
   constructor() { }
 
+  createShowroom(){}
+  updateShowroom(){}
+  deleteShowroom(){}
   ngOnInit() {
   }
 

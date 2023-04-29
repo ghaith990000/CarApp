@@ -5,5 +5,29 @@
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <div style="position: relative; padding-top: 56.25%; overflow:hidden;">
+      <ion-img
+      alt="Toyota Showroom"
+      src="../../../assets/images/toyotaShowroom.jpg"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover" />
 
+    </div>
+    <ion-card-header>
+      <ion-card-title>Showroom Title</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      This is a brief description of the showroom. You can provide more details about the showroom and its features here.
+      <div style="display: flex; justify-content: flex-start; margin-top: 1rem;">
+
+        <ion-button color="secondary" class="updateBtn" size="small" (click)="updateShowroom()">Update</ion-button>
+        <ion-button color="danger" class="deleteBtn" size="small" (click)="deleteShowroom()">Delete</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="createShowroom()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
