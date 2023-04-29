@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>tab3</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Item id: </ion-label>
+    <ion-input [(ngModel)]="newitem.id"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Item name:</ion-label>
+    <ion-input [(ngModel)]="newitem.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Item description: </ion-label>
+    <ion-input [(ngModel)]="newitem.description"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Item photo: </ion-label>
+    <ion-input [(ngModel)]="newitem.photo"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" fill="clear" (click)="add()" [disabled]="!newitem.id">
+    Add new Item
+  </ion-button>
+</ion-content>
