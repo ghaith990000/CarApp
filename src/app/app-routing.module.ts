@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'tab3',
     loadChildren: () => import('./admin/tab3/tab3.module').then( m => m.Tab3PageModule)
+  },
+  {
+    path: 'admin/create-showroom',
+    loadChildren: () => import('./admin/create-showroom/create-showroom.module').then( m => m.CreateShowroomPageModule)
   }
 
 ];
