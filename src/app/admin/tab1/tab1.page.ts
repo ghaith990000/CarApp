@@ -17,8 +17,7 @@ export class Tab1Page implements OnInit {
   navToCreateShowroom(){
     this.router.navigate([''])
   }
-  updateShowroom(){}
-  deleteShowroom(){}
+
   ngOnInit() {
     // this.showrooms = this.showroomSrv.getShowrooms();
   }

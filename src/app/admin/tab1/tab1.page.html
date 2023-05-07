@@ -22,7 +22,7 @@
       <div style="display: flex; justify-content: flex-start; margin-top: 1rem;">
 
         <ion-button color="secondary" class="updateBtn" size="small" routerLink="/admin/update-showroom/{{showroom.id}}">Update</ion-button>
-        <ion-button color="danger" class="deleteBtn" size="small" (click)="deleteShowroom()">Delete</ion-button>
+        <ion-button color="danger" class="deleteBtn" size="small" routerLink="/admin/delete-showroom/{{showroom.id}}">Delete</ion-button>
       </div>
     </ion-card-content>
   </ion-card>

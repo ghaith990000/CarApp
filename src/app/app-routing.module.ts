@@ -37,7 +37,12 @@ const routes: Routes = [
   {
     path: 'admin/update-showroom/:id',
     loadChildren: () => import('./admin/update-showroom/update-showroom.module').then( m => m.UpdateShowroomPageModule)
-  }
+  },
+  {
+    path: 'admin/delete-showroom/:id',
+    loadChildren: () => import('./admin/delete-showroom/delete-showroom.module').then( m => m.DeleteShowroomPageModule)
+  },
+
 
 ];
 @NgModule({
