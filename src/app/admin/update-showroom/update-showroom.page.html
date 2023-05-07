@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>update-showroom</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+  <ion-item>
+    <ion-label>Title:</ion-label>
+    <ion-input type="text" [(ngModel)]="showroom.title" value="{{showroomDetails?.title}}" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Image:</ion-label>
+    <ion-input type="file" (change)="onFileChange($event)"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Description:</ion-label>
+    <ion-textarea [(ngModel)]="showroom.description" value="{{showroomDetails?.description}}" required></ion-textarea>
+  </ion-item>
+
+  <ion-button (click)="updateShowroom()" expand="full">Update Showroom</ion-button>
+</ion-list>
+</ion-content>

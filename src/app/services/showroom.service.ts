@@ -3,12 +3,13 @@ import { AngularFirestore, DocumentReference} from '@angular/fire/compat/firesto
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map, take} from 'rxjs/operators';
+import { Car } from "src/app/services/car.service";
 export interface Showroom {
   id?: string;
   title: string;
   description?: string;
   imageUrl: string;
-
+  cars: Car[];
 }
 
 @Injectable({
@@ -43,15 +44,20 @@ export class ShowroomService {
     )
   }
 
-  addShowroom(showroom: Showroom): Promise<DocumentReference>{
-    return this.showroomCollection.add(showroom);
-  }
-
-  updateShowroom(showroom: Showroom): Promise<void>{
-    return this.showroomCollection.doc(showroom.id).update({
+  addShowroom(showroom: Showroom){
+    return this.showroomCollection.add({
       title: showroom.title,
       description: showroom.description,
-      imageUrl: showroom.imageUrl
+      imageUrl: showroom.imageUrl,
+      cars: [] as Car[],
+    });
+  }
+
+  updateShowroom(id: string, showroom: Showroom): Promise<void>{
+    return this.showroomCollection.doc(id).update({
+      title: showroom.title,
+      description: showroom.description,
+      imageUrl: showroom.imageUrl,
     })
   }
 

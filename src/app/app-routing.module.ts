@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'admin/create-showroom',
     loadChildren: () => import('./admin/create-showroom/create-showroom.module').then( m => m.CreateShowroomPageModule)
+  },
+  {
+    path: 'admin/update-showroom/:id',
+    loadChildren: () => import('./admin/update-showroom/update-showroom.module').then( m => m.UpdateShowroomPageModule)
   }
 
 ];

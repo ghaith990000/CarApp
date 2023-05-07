@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="onSubmit()">
+    <ion-list>
     <ion-item>
       <ion-label>Title:</ion-label>
       <ion-input type="text" [(ngModel)]="newShowroom.title" required></ion-input>
@@ -19,6 +19,6 @@
       <ion-textarea [(ngModel)]="newShowroom.description" required></ion-textarea>
     </ion-item>
 
-    <ion-button type="submit" expand="full">Create Showroom</ion-button>
-  </form>
+    <ion-button (click)="createShowroom()" expand="full">Create Showroom</ion-button>
+  </ion-list>
 </ion-content>
