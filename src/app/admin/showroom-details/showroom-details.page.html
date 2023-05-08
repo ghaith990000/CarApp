@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>showroom-details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="showroom-details">
+    <div class="basic-wrapper">
+      <h1 class="showroom-title">{{showroomDetails?.title}}</h1>
+      <ion-img src="{{showroomDetails?.imageUrl}}"></ion-img>
+    </div>
+    <div class="car-wrapper">
+      <ion-label>Cars</ion-label>
+      <ion-button fill="outline" (click)="navToCreateCar()">
+        <ion-icon name="add"></ion-icon>
+        New Car
+      </ion-button>
+      <div class="cars">
+        <ion-card>
+          <img alt="Car image" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <div class="car-type">Toyota FJ Cruiser</div>
+          <div class="car-price">6.300 BD</div>
+        </ion-card>
+        <ion-card>
+          <img alt="Car image" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <div class="car-type">Toyota FJ Cruiser</div>
+          <div class="car-price">6.300 BD</div>
+        </ion-card>
+        <ion-card>
+          <img alt="Car image" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <div class="car-type">Toyota FJ Cruiser</div>
+          <div class="car-price">6.300 BD</div>
+        </ion-card>
+        <ion-card>
+          <img alt="Car image" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <div class="car-type">Toyota FJ Cruiser</div>
+          <div class="car-price">6.300 BD</div>
+        </ion-card>
+        <ion-card>
+          <img alt="Car image" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <div class="car-type">Toyota FJ Cruiser</div>
+          <div class="car-price">6.300 BD</div>
+        </ion-card>
+
+      </div>
+    </div>
+  </div>
+
+</ion-content>

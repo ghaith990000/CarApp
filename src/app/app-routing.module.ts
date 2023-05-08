@@ -42,6 +42,15 @@ const routes: Routes = [
     path: 'admin/delete-showroom/:id',
     loadChildren: () => import('./admin/delete-showroom/delete-showroom.module').then( m => m.DeleteShowroomPageModule)
   },
+  {
+    path: 'admin/showroom-details/:id',
+    loadChildren: () => import('./admin/showroom-details/showroom-details.module').then( m => m.ShowroomDetailsPageModule)
+  },
+  {
+    path: 'admin/:showroomId/create-car',
+    loadChildren: () => import('./admin/create-car/create-car.module').then( m => m.CreateCarPageModule)
+  },
+
 
 
 ];

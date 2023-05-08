@@ -1,0 +1,60 @@
+h1 {
+  font-size: 2rem;
+  margin-left: 10px;
+  padding-top: 5px !important;
+  padding-bottom: 20px !important;
+  border-bottom: 4px solid #333;
+}
+
+.basic-wrapper {
+
+  margin-top: 10px;
+  border-bottom: 5px solid #eee;
+  padding: 20px;
+}
+
+.car-wrapper {
+  padding: 20px;
+}
+
+.cars {
+  display: flex;
+  // justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+.cars {
+
+  ion-card {
+    position: relative;
+    width: calc(33.33% - 30px);
+    justify-content: space-between;
+    margin: 10px;
+    height: 100px;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+
+
+  .car-type {
+    position: absolute;
+    top: 36%;
+    font-size: 0.8em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .car-price {
+    font-size: 0.7em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+}

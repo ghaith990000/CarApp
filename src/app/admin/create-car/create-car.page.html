@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>create-car</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Type</ion-label>
+      <ion-input type="text" [(ngModel)]="car.type"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Manufacturer</ion-label>
+      <ion-input type="text" [(ngModel)]="car.manufacturer"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Model</ion-label>
+      <ion-input type="text" [(ngModel)]="car.model"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Color</ion-label>
+      <ion-input type="text" [(ngModel)]="car.color"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Mileage</ion-label>
+      <ion-input type="text" [(ngModel)]="car.mileage"></ion-input>
+    </ion-item>
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Engine Specifications</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label position="floating">Horsepower</ion-label>
+        <ion-input [(ngModel)]="car.engineSpecifications.horsepower"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Torque</ion-label>
+        <ion-input [(ngModel)]="car.engineSpecifications.torque"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fuel Efficiency</ion-label>
+        <ion-input [(ngModel)]="car.engineSpecifications.fuelEfficiency"></ion-input>
+      </ion-item>
+    </ion-item-group>
+    <ion-item>
+      <ion-label position="floating">Number of seats:</ion-label>
+      <ion-input type="number" [(ngModel)]="car.numberOfSeats"></ion-input>
+    </ion-item>
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label position="floating">Specification and features</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label position="floating">Sunroof</ion-label>
+        <ion-input [(ngModel)]="car.specificationAndFeatures.sunroof"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Navigation</ion-label>
+        <ion-input [(ngModel)]="car.specificationAndFeatures.navigation"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Heated Seats</ion-label>
+        <ion-input [(ngModel)]="car.specificationAndFeatures.heatedSeats"></ion-input>
+      </ion-item>
+    </ion-item-group>
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input type="number" [(ngModel)]="car.price"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="createCar()">Create New Car</ion-button>
+</ion-content>

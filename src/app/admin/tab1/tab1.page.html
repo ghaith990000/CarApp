@@ -6,8 +6,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let showroom of (showrooms | async)">
-    <div style="position: relative; padding-top: 56.25%; overflow:hidden;">
+  <ion-card *ngFor="let showroom of (showrooms | async)" >
+
+    <div style="position: relative; padding-top: 56.25%; overflow:hidden;" (click)="goToDetail(showroom.id)">
       <ion-img
       alt="Toyota Showroom"
       src={{showroom.imageUrl}}

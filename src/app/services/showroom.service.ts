@@ -3,14 +3,36 @@ import { AngularFirestore, DocumentReference} from '@angular/fire/compat/firesto
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map, take} from 'rxjs/operators';
-import { Car } from "src/app/services/car.service";
+
+export interface Car {
+  type: string;
+  manufacturer: string;
+  model: string;
+  color: string;
+  mileage: number;
+  engineSpecifications: {
+    horsepower: number;
+    torque:  number;
+    fuelEfficiency: number;
+  };
+  numberOfSeats: number;
+  specificationAndFeatures: {
+    sunroof: boolean,
+    navigation: boolean,
+    heatedSeats: boolean,
+    blindSpotMonitor: boolean
+  };
+  price: number;
+  vatPrice: number;
+}
 export interface Showroom {
   id?: string;
   title: string;
   description?: string;
   imageUrl: string;
-  cars: Car[];
 }
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +71,6 @@ export class ShowroomService {
       title: showroom.title,
       description: showroom.description,
       imageUrl: showroom.imageUrl,
-      cars: [] as Car[],
     });
   }
 
@@ -63,5 +84,11 @@ export class ShowroomService {
 
   deleteShowroom(id: any): Promise<void>{
     return this.showroomCollection.doc(id).delete();
+  }
+
+  createCar(showroomId: any, car: Car){
+    const showroomRef = this.showroomCollection.doc(showroomId);
+    const carsCollection = showroomRef.collection<Car>('cars');
+    return carsCollection.add(car);
   }
 }
