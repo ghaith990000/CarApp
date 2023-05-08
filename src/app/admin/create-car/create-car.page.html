@@ -49,25 +49,45 @@
     </ion-item>
     <ion-item-group>
       <ion-item-divider>
-        <ion-label position="floating">Specification and features</ion-label>
+        <ion-label>Specification and features</ion-label>
       </ion-item-divider>
       <ion-item>
-        <ion-label position="floating">Sunroof</ion-label>
-        <ion-input [(ngModel)]="car.specificationAndFeatures.sunroof"></ion-input>
+        <ion-label>Sunroof</ion-label>
+        <ion-toggle [(ngModel)]="car.specificationAndFeatures.sunroof"></ion-toggle>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Navigation</ion-label>
-        <ion-input [(ngModel)]="car.specificationAndFeatures.navigation"></ion-input>
+        <ion-label>Navigation</ion-label>
+        <ion-toggle [(ngModel)]="car.specificationAndFeatures.navigation"></ion-toggle>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Heated Seats</ion-label>
-        <ion-input [(ngModel)]="car.specificationAndFeatures.heatedSeats"></ion-input>
+        <ion-label>Heated Seats</ion-label>
+        <ion-toggle [(ngModel)]="car.specificationAndFeatures.heatedSeats"></ion-toggle>
       </ion-item>
     </ion-item-group>
     <ion-item>
       <ion-label position="floating">Price</ion-label>
       <ion-input type="number" [(ngModel)]="car.price"></ion-input>
     </ion-item>
+    <ion-item-group>
+      <ion-item-divider>car Images</ion-item-divider>
+      <!-- <label for="file-input" class="file-input-label" [class.has-image]="imageSelected">
+        <div class="file-input-content">
+          <ion-icon name="camera" class="camera-icon"></ion-icon>
+          <span class="file-input-text">Choose an image</span>
+        </div>
+        <img *ngIf="imageSelected" [src]="imageSrc" class="selected-image">
+      </label>
+      <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" class="file-input"> -->
+
+      <label for="file-input" class="file-input-label" [class.has-image]="imageSelected">
+        <div class="file-input-content">
+          <ion-icon name="camera" class="camera-icon"></ion-icon>
+          <span class="file-input-text">Choose an image</span>
+        </div>
+        <img *ngIf="imageSelected" [src]="imageSrc" class="selected-image">
+      </label>
+      <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" class="file-input">
+    </ion-item-group>
   </ion-list>
   <ion-button (click)="createCar()">Create New Car</ion-button>
 </ion-content>
