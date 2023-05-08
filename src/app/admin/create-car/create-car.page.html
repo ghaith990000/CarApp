@@ -79,14 +79,30 @@
       </label>
       <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" class="file-input"> -->
 
-      <label for="file-input" class="file-input-label" [class.has-image]="imageSelected">
+      <!-- <label for="file-input" class="file-input-label" [class.has-image]="imageSelected">
         <div class="file-input-content">
           <ion-icon name="camera" class="camera-icon"></ion-icon>
           <span class="file-input-text">Choose an image</span>
         </div>
         <img *ngIf="imageSelected" [src]="imageSrc" class="selected-image">
       </label>
-      <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" class="file-input">
+      <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" class="file-input"> -->
+
+      <label for="file-input" class="file-input-label" [class.has-image]="imagesSelected">
+        <div class="file-input-content">
+          <ion-icon name="camera" class="camera-icon"></ion-icon>
+          <span class="file-input-text">Choose images</span>
+        </div>
+        <div *ngIf="imagesSelected" class="selected-images">
+          <div *ngFor="let image of imagesSrc">
+            <img [src]="image" class="selected-image">
+            <button ion-button (click)="removeImage(image)">Remove</button>
+          </div>
+        </div>
+      </label>
+      <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" class="file-input" multiple>
+
+
     </ion-item-group>
   </ion-list>
   <ion-button (click)="createCar()">Create New Car</ion-button>

@@ -24,6 +24,7 @@ export interface Car {
   };
   price: number;
   vatPrice: number;
+  imageUrls: string[];
 }
 export interface Showroom {
   id?: string;
@@ -90,5 +91,11 @@ export class ShowroomService {
     const showroomRef = this.showroomCollection.doc(showroomId);
     const carsCollection = showroomRef.collection<Car>('cars');
     return carsCollection.add(car);
+  }
+
+  updateCarWithImages(showroomId: any, carId: any){
+    const showroomRef = this.showroomCollection.doc(showroomId);
+    const carsCollection = showroomRef.collection<Car>('cars');
+
   }
 }
