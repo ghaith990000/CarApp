@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'admin/:showroomId/create-car',
     loadChildren: () => import('./admin/create-car/create-car.module').then( m => m.CreateCarPageModule)
   },
+  {
+    path: 'car-details',
+    loadChildren: () => import('./admin/car-details/car-details.module').then( m => m.CarDetailsPageModule)
+  },
 
 
 

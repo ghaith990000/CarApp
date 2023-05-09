@@ -11,24 +11,35 @@
       <ion-img src="{{showroomDetails?.imageUrl}}"></ion-img>
     </div>
     <div class="car-wrapper">
-      <ion-label>Cars</ion-label>
-      <ion-button fill="outline" (click)="navToCreateCar()">
-        <ion-icon name="add"></ion-icon>
-        New Car
-      </ion-button>
-      <div class="cars">
-        <ion-card>
-          <img src="">
-          <ion-card-header>
-            <ion-card-title>carModel</ion-card-title>
-            <ion-card-subtitle>carPrice</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            <!-- Add any additional information here -->
+      <div class="car-list-header">
+        <h2 class="car-heading">Cars</h2>
+        <ion-button fill="outline" class="addCarBtn" (click)="navToCreateCar()">
+          <ion-icon name="add"></ion-icon>
+          New Car
+        </ion-button>
+      </div>
+      <ion-list>
+        <ion-card *ngFor="let car of cars; let i=index" class="car-card">
+          <ion-card-content class="main-content">
+            <img src="{{car.imageUrls[0]}}" alt="{{car.model}}" />
+            <div class="information">
+              <div class="menu-wrapper">
+                <ion-icon name="ellipsis-horizontal-outline" class="more-btn" (click)="toggleMenu(i)"></ion-icon>
+                <div *ngIf="showMenu[i]" class="car-menu">
+                  <button class="menuBtn">Delete</button>
+                  <button class="menuBtn">Update</button>
+                </div>
+              </div>
+              <h1 class="info-title">{{car.manufacturer}} • {{car.model}} • {{car.type}}</h1>
+              <ion-badge class="car-price">{{car.price}} BD</ion-badge>
+            </div>
           </ion-card-content>
+          <div class="">
+
+          </div>
         </ion-card>
 
-      </div>
+      </ion-list>
     </div>
   </div>
 
