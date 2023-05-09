@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map, take} from 'rxjs/operators';
 
 export interface Car {
+  id?:string;
   type: string;
   manufacturer: string;
   model: string;
@@ -93,7 +94,7 @@ export class ShowroomService {
     return carsCollection.add(car);
   }
 
-  getCarByShowroomId(showroomId: string): Observable<Car[]>{
+  getCarsByShowroomId(showroomId: string): Observable<Car[]>{
     return this.afs.collection('showrooms').doc(showroomId).collection<Car>('cars').snapshotChanges().pipe(
       map((snapshots) => snapshots.map((snapshot) =>{
         const data = snapshot.payload.doc.data();
@@ -101,6 +102,17 @@ export class ShowroomService {
 
         return {id, ...data} as Car;
       }))
+    )
+  }
+
+  getCarByShowroomIdAndCarId(showroomId: string, carId: string): Observable<Car>{
+    return this.afs.collection('showrooms').doc(showroomId).collection<Car>('cars').doc(carId).snapshotChanges().pipe(
+      map((snapshot)=> {
+        const data = snapshot.payload.data();
+        const id = snapshot.payload.id;
+
+        return {id, ...data} as Car;
+      })
     )
   }
 

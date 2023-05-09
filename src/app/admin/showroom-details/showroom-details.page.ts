@@ -28,6 +28,10 @@ export class ShowroomDetailsPage implements OnInit {
     this.router.navigateByUrl("/admin/"+this.showroomId+"/create-car");
    }
 
+   goToCarDetails(id: string | undefined){
+    this.router.navigateByUrl("/admin/" + this.showroomId + "/car-details/" + id);
+   }
+
 
 
   ngOnInit() {
@@ -39,7 +43,7 @@ export class ShowroomDetailsPage implements OnInit {
    }
 
   loadCars(showroomId: string){
-    this.showroomSrv.getCarByShowroomId(showroomId).subscribe(
+    this.showroomSrv.getCarsByShowroomId(showroomId).subscribe(
       (data) => {
         this.cars = data;
       },
