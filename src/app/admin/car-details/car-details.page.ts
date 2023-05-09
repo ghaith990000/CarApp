@@ -18,12 +18,15 @@ export class CarDetailsPage implements OnInit {
 
   ngOnInit() {
     this.loadCar(this.showroomId, this.carId);
+
+
   }
 
   loadCar(showroomId: string, carId: string){
     this.showroomSrv.getCarByShowroomIdAndCarId(showroomId, carId).subscribe(
       (data)=> {
         this.car = data;
+        console.log(data);
       },
       (error)=>{
         console.log('Error fetching car', error);
