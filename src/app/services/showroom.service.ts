@@ -93,6 +93,17 @@ export class ShowroomService {
     return carsCollection.add(car);
   }
 
+  getCarByShowroomId(showroomId: string): Observable<Car[]>{
+    return this.afs.collection('showrooms').doc(showroomId).collection<Car>('cars').snapshotChanges().pipe(
+      map((snapshots) => snapshots.map((snapshot) =>{
+        const data = snapshot.payload.doc.data();
+        const id = snapshot.payload.doc.id;
+
+        return {id, ...data} as Car;
+      }))
+    )
+  }
+
   updateCarWithImages(showroomId: any, carId: any){
     const showroomRef = this.showroomCollection.doc(showroomId);
     const carsCollection = showroomRef.collection<Car>('cars');
