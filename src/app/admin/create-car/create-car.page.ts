@@ -84,24 +84,18 @@ export class CreateCarPage implements OnInit {
     this.imagesSelected = false;
   }
 
-
-  // onFileSelected(event: any){
-  //   const file = event.target.files[0];
-  //   if(file){
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => {
-  //       this.imageSelected = true;
-  //       this.imageSrc = reader.result;
-  //     }
-  //   }
-  // }
-
   async createCar(){
+
     let vat = 5;
     this.car.vatPrice = this.car.price + ((vat /100) * this.car.price);
-    this.uploadImages();
+    await this.uploadImages();
+    if(this.car.imageUrls.length <= 0){
+      this.utilitySrv.presentToast("You must select car images", 5000, "bottom", "failure");
+
+      return;
+    }
     try{
+      console.log(this.car.imageUrls);
       await this.showroomSrv.createCar(this.showroomId, this.car);
       this.utilitySrv.presentToast("Created Car Successfully", 5000, "bottom", "success");
       this.router.navigateByUrl("/admin/showroom-details/"+this.showroomId);
