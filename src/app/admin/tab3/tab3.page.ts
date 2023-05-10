@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterPageModule } from 'src/app/pages/register/register.module';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab3Page implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit() {

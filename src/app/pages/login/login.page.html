@@ -4,16 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-label class="title">Sign In</ion-label>
+<ion-content class="ion-padding">
 
-  <ion-item class="input-field">
-    <ion-input type="text" placeholder="Email" [(ngModel)]="email" />
+  <h1>Welcome,</h1>
+  <h3>Sign in to continue!</h3>
+<br><br>
+  <ion-item class="input-field" >
+    <ion-input label="Email ID" type="text" placeholder="Email" [(ngModel)]="email" />
   </ion-item>
-  <ion-item class="input-field">
-    <ion-input type="password" placeholder="Password" [(ngModel)]="password" />
+  <ion-item class="input-field" >
+    <ion-input label="Password" type="password" placeholder="Password" [(ngModel)]="password" />
   </ion-item>
+ <br><br>
+  <ion-button label='Login' expand="block" (click)="logInUser()">Sign In</ion-button>
+  <p class="footer-text" routerLink="/register">I'm a new user, <a routerLink="#">Sign Up</a></p>
 
-  <ion-button expand="block" (click)="logInUser()">Sign In</ion-button>
-  <ion-button routerLink="/register" fill="clear" color="dark" expand="block">Don't have an account? Sign Up</ion-button>
 </ion-content>
+
