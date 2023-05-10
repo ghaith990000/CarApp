@@ -32,6 +32,15 @@ export class ShowroomDetailsPage implements OnInit {
     this.router.navigateByUrl("/admin/" + this.showroomId + "/car-details/" + id);
    }
 
+   deleteCar(id: string | undefined){
+    this.router.navigateByUrl("/admin/" + this.showroomId + "/delete-car/"+ id);
+   }
+
+   updateCar(id: string | undefined){
+    this.router.navigateByUrl("/admin/" + this.showroomId + "/update-car/"+ id);
+
+   }
+
 
 
   ngOnInit() {

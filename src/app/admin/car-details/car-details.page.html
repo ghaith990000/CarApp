@@ -5,5 +5,91 @@
 </ion-header>
 
 <ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let image of car.imageUrls">
+      <div class="swiper-zoom-container">
+        <img src="{{image}}" alt="Car Image" />
+      </div>
+    </ion-slide>
+  </ion-slides>
+    <ion-grid>
+      <ion-row class="header">
+        <ion-col>
+          <h2>Info</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row class="info-row">
+        <ion-col>Type</ion-col>
+        <ion-col>{{car.type}}</ion-col>
+      </ion-row>
+      <ion-row class="info-row">
+        <ion-col>Manufacturer</ion-col>
+        <ion-col>{{car.manufacturer}}</ion-col>
+      </ion-row>
+      <ion-row class="info-row">
+        <ion-col>Model</ion-col>
+        <ion-col>{{car.model}}</ion-col>
+      </ion-row>
+      <ion-row class="info-row">
+        <ion-col>Color</ion-col>
+        <ion-col>{{car.color}}</ion-col>
+      </ion-row>
+      <ion-row class="info-row">
+        <ion-col>Mileage</ion-col>
+        <ion-col>{{car.mileage}}</ion-col>
+      </ion-row>
+      <ion-row class="info-row">
+        <ion-col>Seats</ion-col>
+        <ion-col>{{car.numberOfSeats}}</ion-col>
+      </ion-row>
+      <ion-row class="info-row">
+        <ion-col>Price</ion-col>
+        <ion-col>{{car.price}} BD</ion-col>
+      </ion-row>
+      <ion-row class="info-row">
+        <ion-col>Price (including 5% vat)</ion-col>
+        <ion-col>{{car.vatPrice}} BD</ion-col>
+      </ion-row>
+      <ion-row class="header">
+        <ion-col>
+          <h2>Engine Specifications</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="info-row">
+        <ion-col>Horse Power</ion-col>
+        <ion-col>{{car?.engineSpecifications?.horsepower}}</ion-col>
+      </ion-row>
+
+      <ion-row class="info-row">
+        <ion-col>Torque</ion-col>
+        <ion-col>{{car?.engineSpecifications?.torque}}</ion-col>
+      </ion-row>
+
+      <ion-row class="info-row">
+        <ion-col>fuel Efficiency</ion-col>
+        <ion-col>{{car?.engineSpecifications?.fuelEfficiency}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="features">
+      <h2>Specifications and Features</h2>
+      <div *ngIf="car?.specificationAndFeatures?.sunroof" class="feature">
+        <ion-icon  name="checkmark-circle" style="color: green; margin-right: 20px; font-size: 1.5rem"></ion-icon>
+        <h3 class="feature-txt">Sun Roof</h3>
+      </div>
+      <div *ngIf="car?.specificationAndFeatures?.navigation" class="feature">
+        <ion-icon  name="checkmark-circle" style="color: green; margin-right: 20px; font-size: 1.5rem"></ion-icon>
+        <h3 class="feature-txt">Navigation</h3>
+      </div>
+      <div *ngIf="car?.specificationAndFeatures?.blindSpotMonitor" class="feature">
+        <ion-icon  name="checkmark-circle" style="color: green; margin-right: 20px; font-size: 1.5rem"></ion-icon>
+        <h3 class="feature-txt">Heated Seats</h3>
+      </div>
+      <div *ngIf="car?.specificationAndFeatures?.blindSpotMonitor" class="feature">
+        <ion-icon  name="checkmark-circle" style="color: green; margin-right: 20px; font-size: 1.5rem"></ion-icon>
+        <h3 class="feature-txt">Blind Spot Monitor</h3>
+      </div>
+
+    </div>
 
 </ion-content>

@@ -26,8 +26,8 @@
               <div class="menu-wrapper">
                 <ion-icon name="ellipsis-horizontal-outline" class="more-btn" (click)="toggleMenu(i)"></ion-icon>
                 <div *ngIf="showMenu[i]" class="car-menu">
-                  <button class="menuBtn">Delete</button>
-                  <button class="menuBtn">Update</button>
+                  <button class="menuBtn" (click)="deleteCar(car.id)">Delete</button>
+                  <button class="menuBtn" (click)="updateCar(car.id)">Update</button>
                 </div>
               </div>
               <h1 class="info-title">{{car.manufacturer}} • {{car.model}} • {{car.type}}</h1>

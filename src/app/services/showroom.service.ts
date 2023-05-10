@@ -116,6 +116,23 @@ export class ShowroomService {
     )
   }
 
+  async deleteCar(showroomId: string, carId: string): Promise<void>{
+    try{
+      await this.afs.collection('showrooms').doc(showroomId).collection<Car>('cars').doc(carId).delete()
+    }catch(error){
+      console.log(`Error deleting car: `, error);
+      throw error;
+    }
+  }
+
+  async updateCar(showroomId: string, carId: string, carData: Partial<Car>): Promise<void>{
+    try {
+      await this.afs.collection('showrooms').doc(showroomId).collection<Car>('cars').doc(carId).update(carData);
+    }catch(error){
+      console.log(`Error updating car: `, error);
+    }
+  }
+
   updateCarWithImages(showroomId: any, carId: any){
     const showroomRef = this.showroomCollection.doc(showroomId);
     const carsCollection = showroomRef.collection<Car>('cars');

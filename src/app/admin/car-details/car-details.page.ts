@@ -11,6 +11,15 @@ export class CarDetailsPage implements OnInit {
   car: Car = {} as Car;
   showroomId: string;
   carId: string;
+
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400,
+    zoom: {
+      maxRatio: 3,
+      toggle: true,
+    }
+  };
   constructor(public showroomSrv: ShowroomService, public ActRoute: ActivatedRoute) {
     this.showroomId = this.ActRoute.snapshot.paramMap.get('showroomId') ?? "";
     this.carId = this.ActRoute.snapshot.paramMap.get('carId') ?? "";

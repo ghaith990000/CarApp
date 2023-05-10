@@ -54,6 +54,14 @@ const routes: Routes = [
     path: 'admin/:showroomId/car-details/:carId',
     loadChildren: () => import('./admin/car-details/car-details.module').then( m => m.CarDetailsPageModule)
   },
+  {
+    path: 'admin/:showroomId/delete-car/:carId',
+    loadChildren: () => import('./admin/delete-car/delete-car.module').then( m => m.DeleteCarPageModule)
+  },
+  {
+    path: 'admin/:showroomId/update-car/:carId',
+    loadChildren: () => import('./admin/update-car/update-car.module').then( m => m.UpdateCarPageModule)
+  },
 
 
 
