@@ -29,7 +29,8 @@ export class ShowroomDetailsPage implements OnInit {
    }
 
    goToCarDetails(id: string | undefined){
-    this.router.navigateByUrl("/admin/" + this.showroomId + "/car-details/" + id);
+    // this.router.navigateByUrl("/admin/" + this.showroomId + "/car-details/" + id);
+    this.router.navigateByUrl("/admin/showrooms/" + this.showroomId + "/car-details/" + id);
    }
 
    deleteCar(id: string | undefined){

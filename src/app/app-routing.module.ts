@@ -42,18 +42,18 @@ const routes: Routes = [
     path: 'admin/delete-showroom/:id',
     loadChildren: () => import('./admin/delete-showroom/delete-showroom.module').then( m => m.DeleteShowroomPageModule)
   },
-  {
-    path: 'admin/showroom-details/:id',
-    loadChildren: () => import('./admin/showroom-details/showroom-details.module').then( m => m.ShowroomDetailsPageModule)
-  },
+  // {
+  //   path: 'admin/showroom-details/:id',
+  //   loadChildren: () => import('./admin/showroom-details/showroom-details.module').then( m => m.ShowroomDetailsPageModule)
+  // },
   {
     path: 'admin/:showroomId/create-car',
     loadChildren: () => import('./admin/create-car/create-car.module').then( m => m.CreateCarPageModule)
   },
-  {
-    path: 'admin/:showroomId/car-details/:carId',
-    loadChildren: () => import('./admin/car-details/car-details.module').then( m => m.CarDetailsPageModule)
-  },
+  // {
+  //   path: 'admin/:showroomId/car-details/:carId',
+  //   loadChildren: () => import('./admin/car-details/car-details.module').then( m => m.CarDetailsPageModule)
+  // },
   {
     path: 'admin/:showroomId/delete-car/:carId',
     loadChildren: () => import('./admin/delete-car/delete-car.module').then( m => m.DeleteCarPageModule)
