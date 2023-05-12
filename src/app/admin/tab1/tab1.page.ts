@@ -19,7 +19,7 @@ export class Tab1Page implements OnInit {
   }
 
   goToDetail(id: string| undefined){
-    this.router.navigateByUrl(`/admin/showroom-details/${id}`)
+    this.router.navigateByUrl(`/admin/showrooms/showroom-details/${id}`)
   }
 
   ngOnInit() {

@@ -10,7 +10,22 @@ const routes: Routes = [
     children: [
       {
         path: 'showrooms',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        children: [
+          {
+          path: '',
+          loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+
+          },
+          {
+            path: 'showroom-details/:id',
+            loadChildren: () => import('../../admin/showroom-details/showroom-details.module').then( m => m.ShowroomDetailsPageModule)
+          },
+          {
+            path: ':showroomId/car-details/:carId',
+            loadChildren: () => import('../../admin/car-details/car-details.module').then( m => m.CarDetailsPageModule)
+          },
+        ]
+        // loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
       },
       {
         path: 'tab2',

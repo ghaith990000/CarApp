@@ -94,6 +94,42 @@ export class ShowroomService {
     return carsCollection.add(car);
   }
 
+  getAllCars(): Observable<Car[]>{
+    return this.afs.collectionGroup<Car>('cars').snapshotChanges().pipe(
+      map((snapshots)=> snapshots.map((snapshot) => {
+        const data = snapshot.payload.doc.data();
+        const id = snapshot.payload.doc.id;
+
+        return {id, ...data} as Car;
+      }))
+    )
+  }
+
+  searchCars(
+    type?: string,
+    manufacturer?: string,
+    model?: string,
+    color?: string,
+    mileage?: number,
+    minPrice?: number,
+    maxPrice?: number,
+  ): Observable<Car[]>{
+    return this.getAllCars().pipe(
+      map((cars) => cars.filter((car)=>{
+        return (
+          (!type || car.type === type) &&
+          (!manufacturer || car.manufacturer === manufacturer) &&
+          (!model || car.model === model) &&
+          (!color || car.color === color) &&
+          (!mileage || car.mileage <= mileage) &&
+          (!minPrice || car.price >= minPrice) &&
+          (!maxPrice || car.price <= maxPrice)
+
+        )
+      }))
+    )
+  }
+
   getCarsByShowroomId(showroomId: string): Observable<Car[]>{
     return this.afs.collection('showrooms').doc(showroomId).collection<Car>('cars').snapshotChanges().pipe(
       map((snapshots) => snapshots.map((snapshot) =>{

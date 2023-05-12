@@ -1,9 +1,47 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab2</ion-title>
+    <ion-title>Search</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-searchbar></ion-searchbar>
+  <ion-button>
+    <ion-icon name="filter-outline"></ion-icon>
+  </ion-button>
+  <div class="filter">
 
+        <ion-select (ionChange)="onSelectChange()" [(ngModel)]="type" class="select-box" placeholder="Select Type">
+          <ion-select-option value="{{type.toLowerCase()}}" *ngFor="let type of types">{{type}}</ion-select-option>
+        </ion-select>
+        <ion-select (ionChange)="onSelectChange()" [(ngModel)]="selectedManufacturer" value="{{selectedManufacturer.toLowerCase()}}" class="select-box" placeholder="Select Manufacturer">
+          <ion-select-option value="{{manufacturer.toLowerCase()}}" *ngFor="let manufacturer of manufacturers">{{manufacturer}}</ion-select-option>
+        </ion-select>
+        <ion-select [(ngModel)]="selectedModel" class="select-box" placeholder="Select Model">
+          <ion-select-option *ngFor="let model of models">{{model}}</ion-select-option>
+        </ion-select>
+
+        <div class="colors">
+          <div class="color" *ngFor="let color of colors">
+            <ion-checkbox class="checkbox" [(ngModel)]="checkboxStates[color]"></ion-checkbox>
+            <ion-label>{{color}}</ion-label>
+          </div>
+        </div>
+
+        <div class="price">
+          <h2>Price Range:</h2>
+          <ion-range dualKnobs="true" pin="true" [(ngModel)]="priceRange">
+            <ion-icon slot="start" name="dollar"></ion-icon>
+            <ion-icon slot="end" name="dollar"></ion-icon>
+          </ion-range>
+        </div>
+        <ion-button (click)="showPrice()">Apply Filter</ion-button>
+  </div>
+
+  <div class="car-card" *ngFor="let car of filteredCars$ | async">
+    <img src="{{car.imageUrls[0]}}"/>
+    <div class="info">
+      <h1>{{car.manufacturer}} {{car.model}}</h1>
+    </div>
+  </div>
 </ion-content>
