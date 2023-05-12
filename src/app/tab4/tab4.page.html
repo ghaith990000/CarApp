@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar color="secondary">
     <ion-title>      Profile    </ion-title>
   </ion-toolbar>
@@ -18,6 +18,49 @@
   </div>
 
   
-</ion-content>
+</ion-content> -->
 
   
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Profile
+    </ion-title>
+    <ion-buttons slot="end" >
+      <ion-button (click)="logout1()">
+        Logout
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>User Information</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Name:</ion-label>
+        <ion-text>{{ user.name }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email:</ion-label>
+        <ion-text>{{ user.email }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mobile Number:</ion-label>
+        <ion-text>{{ user.mobileNumber }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Role:</ion-label>
+        <ion-text>{{ user.role }}</ion-text>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button (click)="logout1()" color="danger" expand="full">Logout</ion-button>
+  
+</ion-content>

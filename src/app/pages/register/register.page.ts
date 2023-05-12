@@ -14,6 +14,8 @@ export class RegisterPage implements OnInit {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
+  imageUrl: string='';
+
 
 
   constructor(private authSrv: AuthService, private utilitySrv: UtilityService, private router: Router) {
@@ -34,7 +36,7 @@ export class RegisterPage implements OnInit {
     }else if(this.confirmPassword === ""){
       this.utilitySrv.presentToast("You must fill confirm password", 5000, 'bottom', 'failure');
     }else if(this.password === this.confirmPassword){
-      this.authSrv.register(this.name, this.mobileNumber, this.email, this.password, "customer");
+      this.authSrv.register(this.name, this.mobileNumber, this.email, this.password, "customer",this.imageUrl);
       this.utilitySrv.presentToast("User Registered Successfully", 5000, 'bottom', "success");
       this.router.navigate(['/login']);
 
