@@ -1,20 +1,26 @@
-<ion-tabs>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1">
-      <ion-icon name="home"></ion-icon>
-      <ion-label>Tab1</ion-label>
+<ion-tabs color="primary">
+  <ion-tab-bar slot="bottom" color="secondary">
+    <ion-tab-button tab="tab1" routerLink="/tab1" routerLinkActive="active" color="tertiary">
+      <ion-icon name="car-sport-outline"></ion-icon>
+      <ion-label>Showrooms</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab2" >
-      <ion-icon name="home"></ion-icon>
-      <ion-label>Tab2</ion-label>
+    <ion-tab-button tab="tab2" routerLink="/tab2" routerLinkActive="active" color="tertiary">
+      <ion-icon name="search"></ion-icon>
+      <ion-label>Search</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3">
-      <ion-icon name="home"></ion-icon>
-      <ion-label>Tab3</ion-label>
+    <ion-tab-button tab="tab3" routerLink="/tab3" routerLinkActive="active" color="tertiary">
+      <ion-icon name="car"></ion-icon>
+      <ion-label>Test Drive</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab4" routerLink="/tab4" routerLinkActive="active" color="tertiary">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Profile</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 
+  <ion-router-outlet></ion-router-outlet>
 </ion-tabs>
