@@ -1,18 +1,52 @@
-<ion-content>
-
+<ion-header>
   <ion-toolbar color="secondary">
-    <ion-title>Profile</ion-title>
+    <ion-title>
+      Profile
+    </ion-title>
+    <ion-buttons slot="end" >
+      <ion-button (click)="logout()">
+        Logout
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+</ion-header>
 
-  <div class="profile-container">
-      
-  <img src="" alt="Profile Picture" class="profile-picture">
-  
-    <h2 class="name">John Doe</h2>
-    <p class="email">johndoe@example.com</p>
-    <p class="mobile-number">123-456-7890</p>
-    <p class="role">Administrator</p>
-  </div>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>User Information</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="profile-container">
+        <img src="" class="profile-picture">
+        </div>
+      <ion-item>
+        <ion-label>Name:</ion-label>
+        <ion-text>{{ user.name }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email:</ion-label>
+        <ion-text>{{ user.email }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phone:</ion-label>
+        <ion-text>{{ user.mobileNumber }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Role:</ion-label>
+        <ion-text>{{ user.role }}</ion-text>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 
-  
+
+  <ion-item>
+    <ion-label>Update Pic</ion-label>
+    <ion-input type="file" (change)="uploadIMG($event)" ></ion-input>
+  </ion-item>
+  <ion-button (click)="update()" color="secondary" expand="full">update profile picture</ion-button>
+  <ion-button (click)="logout()" color="medium" expand="full">Logout</ion-button>
+
+
+
 </ion-content>

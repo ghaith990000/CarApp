@@ -4,6 +4,9 @@ import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat
 import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import {map} from "rxjs/operators";
+import { Storage } from '@ionic/storage-angular';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+
 
 export interface User {
   uid: string;
@@ -11,6 +14,7 @@ export interface User {
   mobileNumber: string;
   email: string;
   role: string;
+  imageUrl: string;
 }
 
 @Injectable({
@@ -23,15 +27,25 @@ export class AuthService {
 
   allUsers: User[] = [];
 
+  title='imageupload';
+
+  fileimg: any;
+
+  image: File | null=null;
+
   logged: boolean = false;
   loggedEmail: string = "" ;
   loggedRole: string = "";
 
+  storage=new Storage;
+
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private fireStorage: AngularFireStorage
   ) {
+    this.create();
     this.usersCollection = this.afs.collection<User>('users')
     this.users = this.afs.collection<User>('users').snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -45,6 +59,10 @@ export class AuthService {
     console.log(this.allUsers)
   }
 
+  async create(){
+    await this.storage.create();
+  }
+
   getUsers(){
     this.users.subscribe((data) => {this.allUsers = data})
   }
@@ -53,15 +71,20 @@ export class AuthService {
     return this.allUsers.find(user => user.uid === uid) as User;
   }
 
+  async getUserID(){
+    return await this.storage.get("id");
+  }
+
   // Registration
-  async register(name: string, mobileNumber: string ,email: string, password: string, role: 'admin' | 'customer'): Promise<void>{
+  async register(name: string, mobileNumber: string ,email: string, password: string, role: 'admin' | 'customer', imageUrl: string): Promise<void>{
     const { user } = await this.afAuth.createUserWithEmailAndPassword(email, password);
     await this.afs.collection('users').doc(user?.uid).set({
       uid: user?.uid,
       name,
       mobileNumber,
       email,
-      role
+      role,
+      imageUrl 
     })
   }
 
@@ -76,6 +99,8 @@ export class AuthService {
         this.loggedRole = this.getUserById(user?.uid).role
         console.log(this.loggedRole);
 
+        this.storage.set("id",user?.uid);
+
         if(this.loggedRole === "admin"){
           this.navCtrl.navigateForward('/admin');
         }else if(this.loggedRole === "customer"){
@@ -89,11 +114,48 @@ export class AuthService {
     await this.afAuth.signOut();
     this.logged = false;
     this.loggedEmail = "";
-    this.loggedRole = ""
+    this.loggedRole = "";
+    await this.storage.remove("id");
+    this.navCtrl.navigateForward('/login');
   }
 
   // Get user role
   getUserRole(uid: string): Observable<any>{
     return this.afs.collection('users').doc(uid).valueChanges();
   }
+
+  events:any; 
+
+  uploadimg: boolean=false;
+
+  uploadImage(event:any){
+    this.events=event;
+  }
+  async updateimage(){
+    const file=this.events.target.files[0]
+    if(file){
+      const randomNum = Math.floor(Math.random() * 1000000);
+      const path = `img/${randomNum}_${file.name}`
+      const uploadTask = await this.fireStorage.upload(path,file)
+      const url = await uploadTask.ref.getDownloadURL()
+      console.log(url);
+      // this.loggedRole = this.getUserById(user.uid).imageUrl=url;
+
+      // this.User.imageUrl=url;
+    // this.uploadimg=true;
+    // this.usersCollection.add(this.User).then(
+    //   (res)=>{
+    //     alert("Pics Inserted Successfully");   
+      
+    //   }
+    // );
+    
+  
+  }
+
+     this.fileimg=null;
+
+  }
+
+  
 }

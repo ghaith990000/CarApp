@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterPageModule } from 'src/app/pages/register/register.module';
+import { AuthService , User } from 'src/app/services/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
+
 
 @Component({
   selector: 'app-tab3',
@@ -8,10 +11,39 @@ import { RegisterPageModule } from 'src/app/pages/register/register.module';
 })
 export class Tab3Page implements OnInit {
 
-  
-  constructor() { }
+  user: User = {
+    uid: '',
+    name: '',
+    mobileNumber: '',
+    email: '',
+    role: '',
+    imageUrl: '',
+  };
 
-  ngOnInit() {
+
+  storage=new Storage;
+
+  constructor(private authService: AuthService) { }
+
+  async ngOnInit() {
+  
+  this.user=this.authService.getUserById(await this.authService.getUserID());
+    console.log(this.user);
+  }
+
+ 
+
+ uploadIMG(event:any){
+  this.authService.uploadImage(event);
+ }
+  
+ update(){
+  this.authService.updateimage();
+ }
+
+  logout() {   
+    console.log(1);
+    this.authService.logout();
   }
 
 }

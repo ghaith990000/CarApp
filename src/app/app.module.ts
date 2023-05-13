@@ -14,6 +14,7 @@ import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -29,7 +30,7 @@ const firebaseConfig = {
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule,
-    ReactiveFormsModule, AngularFireStorageModule, AngularFireAuthModule,AppRoutingModule],
+    ReactiveFormsModule, AngularFireStorageModule, AngularFireAuthModule, AppRoutingModule ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
