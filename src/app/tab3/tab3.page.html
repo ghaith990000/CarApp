@@ -1,35 +1,56 @@
-<!-- <ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar color="secondary">
-    <ion-title>      Test Drive    </ion-title>
+    <ion-title>Test Drive Request</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
- 
- 
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Car Model</ion-label>
+      <ion-select [(ngModel)]="selectedCar">
+        <ion-select-option value="car1">Car Model 1</ion-select-option>
+        <ion-select-option value="car2">Car Model 2</ion-select-option>
+        <ion-select-option value="car3">Car Model 3</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-  
-</ion-content> -->
+    <ion-item>
+      <ion-label position="stacked">Preferred Date</ion-label>
+      <ion-datetime presentation="date" display-format="MMM DD, YYYY" min="2023" max="2025" [(ngModel)]="selectedDate"></ion-datetime>
 
+    </ion-item>
 
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar color="secondary">
-    <ion-title>      Profile    </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-item>
+      <ion-label position="stacked">Preferred Time</ion-label>
+      <ion-datetime presentation="time" display-format="h:mm A" picker-format="h:mm A" [(ngModel)]="selectedTime"></ion-datetime>
+    </ion-item>
+  </ion-list>
 
-<ion-content [fullscreen]="true">
- 
+  <ion-button expand="block" color="secondary" class="ion-margin-top" (click)="submitRequest()">Submit Request</ion-button>
 
-  <div class="profile-container">
-      
-  <img src="" alt="Profile Picture" class="profile-picture">
-  
-    <h2 class="name">John Doe</h2>
-    <p class="email">johndoe@example.com</p>
-    <p class="mobile-number">123-456-7890</p>
-    <p class="role">Administrator</p>
+  <div *ngIf="availableDates.length > 0">
+    <h2>Available Dates</h2>
+    <ion-list>
+      <ion-item *ngFor="let date of availableDates">
+        <ion-label>{{ date.date | date:'MMM dd, yyyy' }}</ion-label>
+        <ion-label>{{ date.availableSlots }} slots available</ion-label>
+        <ion-button color="secondary" (click)="viewSlots(date.date)">View Slots</ion-button>
+      </ion-item>
+    </ion-list>
   </div>
 
-  
-</ion-content> -->
+  <div *ngIf="selectedDate && availableSlots.length > 0">
+    <h2>Available Slots for {{ selectedDate | date:'MMM dd, yyyy' }}</h2>
+    <ion-list>
+      <ion-item *ngFor="let slot of availableSlots">
+        <ion-label>{{ slot.time }}</ion-label>
+        <ion-button color="secondary" (click)="reserveSlot(slot.time)">Reserve Slot</ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="showNoSlotsMessage">
+    <h2>No slots available for {{ selectedDate | date:'MMM dd, yyyy' }}</h2>
+  </div>
+</ion-content>

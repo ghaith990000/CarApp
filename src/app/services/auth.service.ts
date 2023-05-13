@@ -135,7 +135,7 @@ export class AuthService {
     const file=this.events.target.files[0]
     if(file){
       const randomNum = Math.floor(Math.random() * 1000000);
-      const path = `img/${randomNum}_${file.name}`
+      const path = `profilesimg/${randomNum}_${file.name}`
       const uploadTask = await this.fireStorage.upload(path,file)
       const url = await uploadTask.ref.getDownloadURL()
       console.log(url);
@@ -156,6 +156,15 @@ export class AuthService {
      this.fileimg=null;
 
   }
+
+  // forgot password
+  forgotPassword(email : string) {
+    this.afAuth.sendPasswordResetEmail(email).then(() => {
+      alert('Congratulations, a password recovery link has been sent to your email');
+    }, err => {
+      alert('Sorry, the email you entered is not registered');
+    })
+}
 
   
 }

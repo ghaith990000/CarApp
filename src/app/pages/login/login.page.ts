@@ -11,6 +11,7 @@ export class LoginPage implements OnInit {
   email: string = '';
   password: string = '';
 
+  
   constructor(private authSrv: AuthService, private router: Router) {
 
   }
@@ -19,7 +20,12 @@ export class LoginPage implements OnInit {
     this.authSrv.login(this.email, this.password);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+
+    }
+
+  
+
   }
 
-}
+

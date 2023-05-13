@@ -46,4 +46,6 @@ export class Tab3Page implements OnInit {
     this.authService.logout();
   }
 
+  
+
 }

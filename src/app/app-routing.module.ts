@@ -62,7 +62,10 @@ const routes: Routes = [
     path: 'admin/:showroomId/update-car/:carId',
     loadChildren: () => import('./admin/update-car/update-car.module').then( m => m.UpdateCarPageModule)
   },
-
+  {
+    path: 'forgotpassword',
+    loadChildren: () => import('./pages/forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
+  }
 
 ];
 @NgModule({
