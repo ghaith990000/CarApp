@@ -6,10 +6,10 @@
 
 <ion-content>
   <ion-searchbar></ion-searchbar>
-  <ion-button>
+  <ion-button (click)="toggleFilter()">
     <ion-icon name="filter-outline"></ion-icon>
   </ion-button>
-  <div class="filter">
+  <div class="filter" *ngIf="openFilter">
 
         <ion-select (ionChange)="onSelectChange()" [(ngModel)]="type" class="select-box" placeholder="Select Type">
           <ion-select-option value="{{type.toLowerCase()}}" *ngFor="let type of types">{{type}}</ion-select-option>
@@ -18,7 +18,7 @@
           <ion-select-option value="{{manufacturer.toLowerCase()}}" *ngFor="let manufacturer of manufacturers">{{manufacturer}}</ion-select-option>
         </ion-select>
         <ion-select [(ngModel)]="selectedModel" class="select-box" placeholder="Select Model">
-          <ion-select-option *ngFor="let model of models">{{model}}</ion-select-option>
+          <ion-select-option *ngFor="let model of models" value="{{model.toLowerCase()}}">{{model}}</ion-select-option>
         </ion-select>
 
         <div class="colors">
@@ -28,20 +28,30 @@
           </div>
         </div>
 
+        <div>
+          <h2>Mileage</h2>
+          <ion-range dualKnobs="true" pin="true" [ticks]="true" [min]="0" max="500000" [(ngModel)]="mileageRange">
+          </ion-range>
+        </div>
+
         <div class="price">
           <h2>Price Range:</h2>
           <ion-range dualKnobs="true" pin="true" [(ngModel)]="priceRange">
-            <ion-icon slot="start" name="dollar"></ion-icon>
-            <ion-icon slot="end" name="dollar"></ion-icon>
+            <ion-icon slot="start" name="cash-outline"></ion-icon>
+            <ion-icon slot="end" name="cash-outline"></ion-icon>
           </ion-range>
         </div>
-        <ion-button (click)="showPrice()">Apply Filter</ion-button>
+        <ion-button (click)="onSearch()">Apply Filter</ion-button>
   </div>
-
-  <div class="car-card" *ngFor="let car of filteredCars$ | async">
-    <img src="{{car.imageUrls[0]}}"/>
-    <div class="info">
-      <h1>{{car.manufacturer}} {{car.model}}</h1>
+  <div class="search-container">
+    <div *ngIf="filteredResults !== 0">
+      <div class="car-card" *ngFor="let car of filteredCars$ | async">
+        <img src="{{car.imageUrls[0]}}" class="car-img"/>
+        <div class="info">
+          <h1>{{car.manufacturer}} {{car.model}}</h1>
+        </div>
+      </div>
     </div>
+    <div *ngIf="filteredResults === 0">No Results found !!!</div>
   </div>
 </ion-content>

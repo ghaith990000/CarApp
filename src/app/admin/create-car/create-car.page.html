@@ -8,19 +8,27 @@
   <ion-list>
     <ion-item>
       <ion-label position="floating">Type</ion-label>
-      <ion-input type="text" [(ngModel)]="car.type"></ion-input>
+      <ion-select [(ngModel)]="car.type" (ionChange)="onSelectChange()">
+        <ion-select-option *ngFor="let type of types" value="{{type.toLowerCase()}}">{{type}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Manufacturer</ion-label>
-      <ion-input type="text" [(ngModel)]="car.manufacturer"></ion-input>
+      <ion-select [(ngModel)]="car.manufacturer" (ionChange)="onSelectChange()">
+        <ion-select-option *ngFor="let manufacturer of manufacturers" value="{{manufacturer.toLowerCase()}}">{{manufacturer}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Model</ion-label>
-      <ion-input type="text" [(ngModel)]="car.model"></ion-input>
+      <ion-select [(ngModel)]="car.model">
+        <ion-select-option *ngFor="let model of models" value="{{model.toLowerCase()}}">{{model}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Color</ion-label>
-      <ion-input type="text" [(ngModel)]="car.color"></ion-input>
+      <ion-select [(ngModel)]="car.color">
+        <ion-select-option *ngFor="let color of colors" value="{{color.toLowerCase()}}">{{color}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Mileage</ion-label>

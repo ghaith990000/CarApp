@@ -109,8 +109,8 @@ export class ShowroomService {
     type?: string,
     manufacturer?: string,
     model?: string,
-    color?: string,
-    mileage?: number,
+    color?: string[] | null,
+    mileage?: {lower: number, upper: number},
     minPrice?: number,
     maxPrice?: number,
   ): Observable<Car[]>{
@@ -120,8 +120,8 @@ export class ShowroomService {
           (!type || car.type === type) &&
           (!manufacturer || car.manufacturer === manufacturer) &&
           (!model || car.model === model) &&
-          (!color || car.color === color) &&
-          (!mileage || car.mileage <= mileage) &&
+          (!color || color.length===0 || color.some((c)=>car.color.includes(c))) &&
+          (!mileage || (!mileage.lower || car.mileage >= mileage.lower) && (!mileage.upper || car.mileage <= mileage.upper)) &&
           (!minPrice || car.price >= minPrice) &&
           (!maxPrice || car.price <= maxPrice)
 
