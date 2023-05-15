@@ -6,6 +6,7 @@ import { map, take} from 'rxjs/operators';
 
 export interface Car {
   id?:string;
+  showroomId: string;
   type: string;
   manufacturer: string;
   model: string;
@@ -99,8 +100,9 @@ export class ShowroomService {
       map((snapshots)=> snapshots.map((snapshot) => {
         const data = snapshot.payload.doc.data();
         const id = snapshot.payload.doc.id;
+        const showroomId = snapshot.payload.doc.ref.parent.parent?.id;
 
-        return {id, ...data} as Car;
+        return {id, ...data, showroomId} as Car;
       }))
     )
   }

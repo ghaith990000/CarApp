@@ -62,6 +62,11 @@ const routes: Routes = [
     path: 'admin/:showroomId/update-car/:carId',
     loadChildren: () => import('./admin/update-car/update-car.module').then( m => m.UpdateCarPageModule)
   },
+  // {
+  //   path: 'test-drive',
+  //   loadChildren: () => import('./test-drive/test-drive.module').then( m => m.TestDrivePageModule)
+  // },
+
 
 
 ];

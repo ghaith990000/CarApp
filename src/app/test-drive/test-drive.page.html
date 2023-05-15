@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Book a Test Drive</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- <img src="{{}}"> -->
+  <ion-list>
+    <ion-item>
+      <ion-label>Date of Test Drive</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="dob"></ion-datetime>
+s
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Intersted in</ion-label>
+      <ion-select>
+        <ion-select-option>Ready to buy</ion-select-option>
+        <ion-select-option>Vehicle details</ion-select-option>
+        <ion-select-option>Price details</ion-select-option>
+        <ion-select-option>Not decided yet</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-button (click)="requestDrive()">Request Test Drive</ion-button>
+</ion-content>

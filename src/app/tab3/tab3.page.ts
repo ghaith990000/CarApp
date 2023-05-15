@@ -10,5 +10,11 @@ export class Tab3Page {
 
   constructor() { }
 
-  
+  makeDrive(){
+    alert("Make a drive");
   }
+
+
+  }
+
+

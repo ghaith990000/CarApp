@@ -13,7 +13,17 @@ const routes: Routes = [
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+
+          },
+          {
+            path: 'test-drive/:showroomId/:carId',
+            loadChildren: () => import('../test-drive/test-drive.module').then( m => m.TestDrivePageModule)
+          },
+        ]
       },
       {
         path: 'tab3',
@@ -23,7 +33,7 @@ const routes: Routes = [
         path: 'tab4',
         loadChildren: () => import('../tab4/tab4.module').then(m => m.Tab4PageModule)
       },
-      
+
       {
         path: '',
         redirectTo: '/tabs/tab1',

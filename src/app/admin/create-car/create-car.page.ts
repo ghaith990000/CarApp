@@ -17,6 +17,7 @@ export class CreateCarPage implements OnInit {
   showroomId: string = "";
   car: Car = {
     type: "",
+    showroomId: "",
     manufacturer: "",
     model: "",
     color: "",

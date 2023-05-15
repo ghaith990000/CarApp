@@ -1,0 +1,64 @@
+.select-box {
+  border: 2px solid #999;
+  margin-left: 4px;
+  margin-right: 4px;
+  border-radius: 10px;
+  margin-bottom : 2px;
+}
+
+.colors {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px 4px;
+  border: 1px solid #ccc;
+  padding: 10px;
+
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.color {
+  display: flex;
+  justify-content: start;
+  margin-bottom: 10px;
+  align-items: center;
+  width: 33.33%;
+  border-radius: 10px;
+}
+
+.price {
+  border: 1px solid #ccc;
+  padding: 10px 4px;
+  border-radius: 10px;
+
+}
+
+// .search-container {
+
+// }
+
+.car-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // border: 1px solid #ccc;
+  padding: 4px;
+  margin: 10px 8px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+              0 6px 20px rgba(0, 0, 0, 0.19);
+}
+
+.info {
+  width: 66%;
+}
+
+.car-img {
+  width: 30%;
+  // height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
