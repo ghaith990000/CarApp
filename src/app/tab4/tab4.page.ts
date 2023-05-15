@@ -16,8 +16,9 @@ export class Tab4Page implements OnInit {
     mobileNumber: '',
     email: '',
     role: '',
-    imageUrl: ''
+    imageUrl: '',
   };
+
 
   storage=new Storage;
 
@@ -29,9 +30,15 @@ export class Tab4Page implements OnInit {
     console.log(this.user);
   }
 
-  logout1(){
-    console.log(2);
-  }
+ 
+
+ uploadIMG(event:any){
+  this.authService.uploadImage(event);
+ }
+  
+ update(){
+  this.authService.updateimage();
+ }
 
   logout() {   
     console.log(1);
