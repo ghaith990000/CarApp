@@ -37,7 +37,16 @@ const routes: Routes = [
       },
       {
         path: 'test-drive',
-        loadChildren: () => import('../test-drive/test-drive.module').then( m => m.TestDrivePageModule)
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../test-drive/test-drive.module').then( m => m.TestDrivePageModule)
+          },
+          {
+            path: 'test-drive-detail/:testDriveId',
+            loadChildren: () => import('../test-drive-detail/test-drive-detail.module').then( m => m.TestDriveDetailPageModule)
+          },
+        ]
       },
     ]
   }

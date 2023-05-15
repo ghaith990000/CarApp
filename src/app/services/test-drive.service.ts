@@ -91,6 +91,16 @@ export class TestDriveService {
     )
   }
 
+  updateTestDrive(testDriveId: string, updatedTestDrive: TestDrive): Promise<void>{
+    const testDriveRef = this.firebase.collection<TestDrive>('testDrives').doc(testDriveId);
+    return testDriveRef.update(updatedTestDrive);
+  }
+
+  updateTestDriveStatusById(testDriveId: string, newStatus: string): Promise<void> {
+    const testDriveRef = this.firebase.collection<TestDrive>('testDrives').doc(testDriveId);
+    return testDriveRef.update({ status: newStatus });
+  }
+
 
   //  reserveTestDrive(carId: string, userId: string, dateString: string) {
   //   const date = new Date(dateString);

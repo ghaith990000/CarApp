@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="car-card" *ngFor="let testDrive of testDrives; let i=index" routerLink="/tabs/tab3/test-drive-detail/{{testDrive.id}}">
+  <div class="car-card" *ngFor="let testDrive of testDrives; let i=index" routerLink="/admin/test-drive/test-drive-detail/{{testDrive.id}}">
     <img src="{{cars[i].imageUrls[0]}}" class="car-img"/>
     <div class="info">
       <h1>{{cars[i].manufacturer}} {{cars[i].model}}</h1>
