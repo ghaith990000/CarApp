@@ -32,7 +32,7 @@ export class TestDrivePage implements OnInit {
     console.log("Logged User is ", this.user);
     try{
 
-      this.testDriveSrv.reserveTestDrive(this.carId, this.user.uid, this.dob)
+      this.testDriveSrv.reserveTestDrive(this.carId, this.showroomId,this.user.uid, this.dob)
     }catch(error){
     }
 

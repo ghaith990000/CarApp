@@ -8,9 +8,11 @@ import { first } from 'rxjs/operators';
 import { User } from './auth.service';
 import { UtilityService } from './utility.service';
 export interface TestDrive {
+  id?: string;
   carId: string;
   userId: string;
   dateString: string;
+  showroomId: string;
   status: string;
 }
 
@@ -31,7 +33,7 @@ export class TestDriveService {
     )
    }
 
-   reserveTestDrive(carId: string, userId: string, dateString: string) {
+   reserveTestDrive(carId: string, showroomId: string, userId: string, dateString: string) {
     const date = new Date(dateString);
     const testDrivesCollection = this.firebase.collection<TestDrive>('testDrives');
     const userTestDrives = testDrivesCollection.ref.where('userId', '==', userId).where('status', '==', 'Pending');
@@ -55,6 +57,7 @@ export class TestDriveService {
               carId,
               userId,
               dateString,
+              showroomId,
               status: 'Pending',
             };
 
@@ -64,6 +67,28 @@ export class TestDriveService {
         });
       }
     });
+  }
+
+
+
+  getUserTestDrives(userId: string){
+    return this.firebase.collection<TestDrive>('testDrives', ref => ref.where('userId', '==', userId)).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as TestDrive;
+        const id = a.payload.doc.id;
+        return { id, ...data} as TestDrive;
+      }))
+    )
+  }
+
+  getAllTestDrives(){
+    return this.firebase.collection<TestDrive>('testDrives').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as TestDrive;
+        const id = a.payload.doc.id;
+        return { id, ...data} as TestDrive;
+      }))
+    )
   }
 
 

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>test-drive</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="car-card" *ngFor="let testDrive of testDrives; let i=index" routerLink="/tabs/tab3/test-drive-detail/{{testDrive.id}}">
+    <img src="{{cars[i].imageUrls[0]}}" class="car-img"/>
+    <div class="info">
+      <h1>{{cars[i].manufacturer}} {{cars[i].model}}</h1>
+      <p>{{cars[i].price | number:'1.3-3'}} BHD</p>
+      <ion-badge>{{testDrive.status}}</ion-badge>
+    </div>
+  </div>
+</ion-content>

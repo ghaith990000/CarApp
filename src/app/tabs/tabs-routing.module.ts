@@ -27,7 +27,16 @@ const routes: Routes = [
       },
       {
         path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+          },
+          {
+            path: 'test-drive-detail/:testDriveId',
+            loadChildren: () => import('../test-drive-detail/test-drive-detail.module').then( m => m.TestDriveDetailPageModule)
+          },
+        ]
       },
       {
         path: 'tab4',

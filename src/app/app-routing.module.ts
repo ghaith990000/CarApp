@@ -62,6 +62,20 @@ const routes: Routes = [
     path: 'admin/:showroomId/update-car/:carId',
     loadChildren: () => import('./admin/update-car/update-car.module').then( m => m.UpdateCarPageModule)
   },
+  {
+    path: 'approve',
+    loadChildren: () => import('./approve/approve.module').then( m => m.ApprovePageModule)
+  },
+  // {
+  //   path: 'test-drive',
+  //   loadChildren: () => import('./admin/test-drive/test-drive.module').then( m => m.TestDrivePageModule)
+  // },
+
+  // {
+  //   path: 'test-drive-detail',
+  //   loadChildren: () => import('./test-drive-detail/test-drive-detail.module').then( m => m.TestDriveDetailPageModule)
+  // },
+
   // {
   //   path: 'test-drive',
   //   loadChildren: () => import('./test-drive/test-drive.module').then( m => m.TestDrivePageModule)
