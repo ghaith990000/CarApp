@@ -8,7 +8,7 @@
 <ion-content>
   <ion-searchbar></ion-searchbar>
   <ion-button (click)="toggleFilter()">
-    <ion-icon name="filter-outline"></ion-icon>
+    <ion-icon name="filter-outline" color="secondary"></ion-icon>
   </ion-button>
   <div class="filter" *ngIf="openFilter">
 
@@ -42,7 +42,9 @@
             <ion-icon slot="end" name="cash-outline"></ion-icon>
           </ion-range>
         </div>
-        <ion-button (click)="onSearch()">Apply Filter</ion-button>
+        <ion-button  color="secondary" (click)="onSearch()">Apply Filter</ion-button>        
+        <ion-button  color="secondary" (click)="reset()">Reset</ion-button>
+
   </div>
   <div class="search-container">
     <div *ngIf="filteredResults !== 0">

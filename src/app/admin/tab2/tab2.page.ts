@@ -164,5 +164,15 @@ export class Tab2Page implements OnInit {
     )
   }
 
+  reset(){
+  this.selectedManufacturer="";
+  this.type = "";
+  this.selectedModel = "";
+  this.checkboxStates={};
+  this.mileageRange ={lower: 0, upper: 200000};
+  this.priceRange={lower: 0, upper: 5000};
+  this.onSearch();
+
+  }
 
 }
