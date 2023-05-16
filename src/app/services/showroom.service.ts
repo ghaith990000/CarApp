@@ -3,6 +3,7 @@ import { AngularFirestore, DocumentReference} from '@angular/fire/compat/firesto
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map, take} from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 export interface Car {
   id?:string;
@@ -34,6 +35,13 @@ export interface Showroom {
   description?: string;
   imageUrl: string;
 }
+export interface rate_comment {
+  rating: number,
+  comment: string,
+  timestamp: number,
+  uid: string,
+  carId: string
+}
 
 
 
@@ -41,9 +49,13 @@ export interface Showroom {
   providedIn: 'root'
 })
 export class ShowroomService {
+
+
   private showrooms: Observable<Showroom[]>;
   private showroomCollection: AngularFirestoreCollection<Showroom>;
-  constructor(private afs: AngularFirestore) {
+  private ratecommentCollection: AngularFirestoreCollection<rate_comment>
+  constructor(private afs: AngularFirestore, private auth: AuthService) {
+    this.ratecommentCollection = this.afs.collection<rate_comment>('ratings');
     this.showroomCollection = this.afs.collection<Showroom>('showrooms');
     this.showrooms = this.showroomCollection.snapshotChanges().pipe(
       map(actions => {
@@ -176,4 +188,28 @@ export class ShowroomService {
     const carsCollection = showroomRef.collection<Car>('cars');
 
   }
+
+  async submitRating(rating: number , comment: string, carId: any) {
+    const userId = await this.auth.getUserID(); 
+    const timestamp = new Date().getTime();
+
+    try {
+      await this.ratecommentCollection.add({
+        rating: rating,
+        comment: comment,
+        timestamp,
+        uid: userId,
+        carId
+      });
+
+      console.log('Rating submitted successfully');
+    } catch (error) {
+      console.error('Error submitting rating', error);
+    }
+  }
+  
+  getRatingsAndComments(): Observable<any[]> {
+    return this.afs.collection('ratings').valueChanges(); 
+  }
+
 }

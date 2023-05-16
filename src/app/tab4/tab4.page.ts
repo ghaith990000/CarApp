@@ -16,8 +16,10 @@ export class Tab4Page implements OnInit {
     mobileNumber: '',
     email: '',
     role: '',
-    imageUrl: ''
+    imageUrl: '',
   };
+
+  imageUrl: any = "./assets/images/default.png";
 
   storage=new Storage;
 
@@ -27,11 +29,24 @@ export class Tab4Page implements OnInit {
   
   this.user=this.authService.getUserById(await this.authService.getUserID());
     console.log(this.user);
+
+    this.imageUrl=this.user.imageUrl || "./assets/images/default.png";
   }
 
-  logout1(){
-    console.log(2);
-  }
+ 
+
+ uploadIMG(event:any){
+  this.authService.uploadImage(event);
+ }
+  
+ async update(){
+  var url =await this.authService.updateimage();
+  if (url!=undefined){
+    
+    this.imageUrl=url || this.user.imageUrl;
+  }    
+
+ }
 
   logout() {   
     console.log(1);
