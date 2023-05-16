@@ -66,6 +66,10 @@ const routes: Routes = [
     path: 'approve',
     loadChildren: () => import('./approve/approve.module').then( m => m.ApprovePageModule)
   },
+  {
+    path: 'forgotpassword',
+    loadChildren: () => import('./forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
+  },
   // {
   //   path: 'car-details',
   //   loadChildren: () => import('./car-details/car-details.module').then( m => m.CarDetailsPageModule)

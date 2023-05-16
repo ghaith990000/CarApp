@@ -72,7 +72,7 @@ export class AuthService {
   }
 
   async getUserID(){
-    return await this.storage.get("id");
+    return await this.storage.get("id") || "";
   }
 
   // Registration
@@ -156,6 +156,16 @@ export class AuthService {
       
 
   }
+
+  // forgot password
+  forgotPassword(email : string) {
+    this.afAuth.sendPasswordResetEmail(email).then(() => {
+      alert('Congratulations, a password recovery link has been sent to your email');
+    }, err => {
+      alert('Sorry, the email you entered is not registered');
+    })
+}
+
 
   
 }

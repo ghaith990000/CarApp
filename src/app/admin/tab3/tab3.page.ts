@@ -34,7 +34,6 @@ export class Tab3Page implements OnInit {
     this.imageUrl=this.user.imageUrl || "./assets/images/default.png";
   }
 
- 
 
  uploadIMG(event:any){
   this.authService.uploadImage(event);
