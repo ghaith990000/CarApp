@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>showroom-details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="showroom-details">
+    <div class="basic-wrapper">
+      <h1 class="showroom-title">{{showroomDetails?.title}}</h1>
+      <ion-img src="{{showroomDetails?.imageUrl}}"></ion-img>
+    </div>
+    <div class="car-wrapper">
+      <div class="car-list-header">
+        <h2 class="car-heading">Cars</h2>
+
+      </div>
+      <ion-list>
+        <ion-card *ngFor="let car of cars; let i=index" class="car-card">
+          <ion-card-content class="main-content">
+            <img src="{{car.imageUrls[0]}}" alt="{{car.model}}" (click)="goToCarDetails(car.id)"/>
+            <div class="information">
+
+              <h1 class="info-title">{{car.manufacturer}} • {{car.model}} • {{car.type}}</h1>
+              <ion-badge class="car-price">{{car.price}} BD</ion-badge>
+            </div>
+          </ion-card-content>
+          <div class="">
+
+          </div>
+        </ion-card>
+
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

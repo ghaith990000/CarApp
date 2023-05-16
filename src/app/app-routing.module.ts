@@ -67,6 +67,11 @@ const routes: Routes = [
     loadChildren: () => import('./approve/approve.module').then( m => m.ApprovePageModule)
   },
   // {
+  //   path: 'showroom-details',
+  //   loadChildren: () => import('./showroom-details/showroom-details.module').then( m => m.ShowroomDetailsPageModule)
+  // },
+
+  // {
   //   path: 'test-drive-detail',
   //   loadChildren: () => import('./admin/test-drive-detail/test-drive-detail.module').then( m => m.TestDriveDetailPageModule)
   // },

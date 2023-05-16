@@ -6,8 +6,27 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-card *ngFor="let showroom of (showrooms | async)" >
 
+    <div style="position: relative; padding-top: 56.25%; overflow:hidden;" (click)="goToDetail(showroom.id)">
+      <ion-img
+      alt="Toyota Showroom"
+      src={{showroom.imageUrl}}
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover" />
 
-  <ion-button>Hello everybod</ion-button>
+    </div>
+    <ion-card-header>
+      <ion-card-title>{{showroom.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{showroom.description}}
+
+    </ion-card-content>
+  </ion-card>
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" [routerLink]="'/admin/create-showroom'">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
 
 </ion-content>
