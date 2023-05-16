@@ -16,7 +16,16 @@ const routes: Routes = [
           },
           {
             path: 'showroom-details/:showroomId',
-            loadChildren: () => import('../showroom-details/showroom-details.module').then( m => m.ShowroomDetailsPageModule)
+            children: [
+              {
+                path: '',
+                loadChildren: () => import('../showroom-details/showroom-details.module').then( m => m.ShowroomDetailsPageModule)
+              },
+              {
+                path: 'car-details/:carId',
+                loadChildren: () => import('../car-details/car-details.module').then( m => m.CarDetailsPageModule)
+              },
+            ]
           },
         ]
       },

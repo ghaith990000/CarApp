@@ -35,7 +35,7 @@ export class ShowroomDetailsPage implements OnInit {
 
   goToCarDetails(id: string | undefined){
     // this.router.navigateByUrl("/admin/" + this.showroomId + "/car-details/" + id);
-    this.router.navigateByUrl("/admin/showrooms/" + this.showroomId + "/car-details/" + id);
+    this.router.navigateByUrl(`/tabs/tab1/showroom-details/${this.showroomId}/car-details/${id}`);
    }
 
   ngOnInit() {
