@@ -29,3 +29,16 @@ ion-slides {
 .info-row:nth-of-type(odd){
   background-color: rgb(249, 250, 250);
 }
+
+.rating ion-icon {
+  font-size: 30px;
+  color: #ffd700;
+}
+
+.rating ion-icon.star-outline {
+  color: #c4c4c4;
+}
+
+.rating ion-icon:not(:last-child) {
+  margin-right: 5px;
+}

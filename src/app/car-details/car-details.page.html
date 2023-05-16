@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>car-details</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -89,6 +89,29 @@
         <ion-icon  name="checkmark-circle" style="color: green; margin-right: 20px; font-size: 1.5rem"></ion-icon>
         <h3 class="feature-txt">Blind Spot Monitor</h3>
       </div>
+      <ion-list>
+        <ion-item>
+          <ion-label>Rating:</ion-label>
+          <div class="rating">
+            <ion-icon *ngFor="let i of [1, 2, 3, 4, 5]" [name]="i <= rating ? 'star' : 'star-outline'" (click)="rate(i)"></ion-icon>
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-label>Comment:</ion-label>
+          <ion-textarea [(ngModel)]="comment"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <ion-button color="secondary" expand="block" (click)="submitRating()">Submit</ion-button>
+      <ion-list>
+        <ion-item *ngFor="let ratingAndComment of ratingsAndComments">
+          <ion-label>
+            <div class="rating">
+              <ion-icon *ngFor="let i of [1, 2, 3, 4, 5]" [name]="i <= ratingAndComment.rating ? 'star' : 'star-outline'"></ion-icon>
+            </div>
+            <p>{{ ratingAndComment.comment }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
 
     </div>
     <div class="rating">

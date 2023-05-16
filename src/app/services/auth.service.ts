@@ -72,7 +72,7 @@ export class AuthService {
   }
 
   async getUserID(){
-    return await this.storage.get("id");
+    return await this.storage.get("id") || "";
   }
 
   // Registration
@@ -134,28 +134,38 @@ export class AuthService {
   async updateimage(){
     const file=this.events.target.files[0]
     if(file){
+
       const randomNum = Math.floor(Math.random() * 1000000);
       const path = `img/${randomNum}_${file.name}`
       const uploadTask = await this.fireStorage.upload(path,file)
       const url = await uploadTask.ref.getDownloadURL()
-      console.log(url);
-      // this.loggedRole = this.getUserById(user.uid).imageUrl=url;
-
-      // this.User.imageUrl=url;
-    // this.uploadimg=true;
-    // this.usersCollection.add(this.User).then(
-    //   (res)=>{
-    //     alert("Pics Inserted Successfully");   
-      
-    //   }
-    // );
-    
+      this.updateprofile(await this.getUserID(),url);
+      return url;
   
   }
 
-     this.fileimg=null;
+  return undefined;
 
   }
+
+  async updateprofile(uid: string , urls: string ){
+
+    this.usersCollection.doc(uid).update({
+      imageUrl: urls
+      });
+      
+
+  }
+
+  // forgot password
+  forgotPassword(email : string) {
+    this.afAuth.sendPasswordResetEmail(email).then(() => {
+      alert('Congratulations, a password recovery link has been sent to your email');
+    }, err => {
+      alert('Sorry, the email you entered is not registered');
+    })
+}
+
 
   
 }

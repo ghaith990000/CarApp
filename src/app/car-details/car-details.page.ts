@@ -9,6 +9,10 @@ import { AuthService, User } from '../services/auth.service';
   styleUrls: ['./car-details.page.scss'],
 })
 export class CarDetailsPage implements OnInit {
+  rating: number =0;
+  comment: string ="";
+  ratingsAndComments: any[] = [];
+
   car: Car = {} as Car;
   showroomId: string;
   carId: string;
@@ -37,6 +41,7 @@ export class CarDetailsPage implements OnInit {
   constructor(public authSrv: AuthService,public showroomSrv: ShowroomService, public ActRoute: ActivatedRoute) {
     this.showroomId = this.ActRoute.snapshot.paramMap.get("showroomId") ?? "";
     this.carId = this.ActRoute.snapshot.paramMap.get('carId') ?? "";
+    this.getRatingsAndComments();
 
   }
 
@@ -72,6 +77,25 @@ export class CarDetailsPage implements OnInit {
     }).catch(error => {
       console.log('Error adding comment: ', error);
     })
+  }
+
+
+  submitRating(){
+    this.showroomSrv.submitRating(this.rating,this.comment, this.carId);
+    this.comment="";
+    this.rating=0;
+  }
+
+  rate(rating: number) {
+    this.rating = rating;
+  }
+
+  getRatingsAndComments() {
+    this.showroomSrv.getRatingsAndComments().subscribe((data) => {
+      data = data.filter(a=>a.carId == this.carId)
+      this.ratingsAndComments = data;
+      console.log(data)
+    });
   }
 
 }

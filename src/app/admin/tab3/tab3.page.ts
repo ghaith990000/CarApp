@@ -20,6 +20,7 @@ export class Tab3Page implements OnInit {
     imageUrl: '',
   };
 
+  imageUrl: any = "./assets/images/default.png";
 
   storage=new Storage;
 
@@ -29,16 +30,22 @@ export class Tab3Page implements OnInit {
   
   this.user=this.authService.getUserById(await this.authService.getUserID());
     console.log(this.user);
+
+    this.imageUrl=this.user.imageUrl || "./assets/images/default.png";
   }
 
- 
 
  uploadIMG(event:any){
   this.authService.uploadImage(event);
  }
   
- update(){
-  this.authService.updateimage();
+ async update(){
+  var url =await this.authService.updateimage();
+  if (url!=undefined){
+    
+    this.imageUrl=url || this.user.imageUrl;
+  }    
+
  }
 
   logout() {   
