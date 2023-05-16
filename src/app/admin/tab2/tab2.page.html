@@ -42,7 +42,9 @@
             <ion-icon slot="end" name="cash-outline"></ion-icon>
           </ion-range>
         </div>
-        <ion-button (click)="onSearch()">Apply Filter</ion-button>
+        <ion-button (click)="onSearch()">Apply Filter</ion-button>        
+        <ion-button (click)="reset()">Reset</ion-button>
+
   </div>
   <div class="search-container">
     <div *ngIf="filteredResults !== 0">

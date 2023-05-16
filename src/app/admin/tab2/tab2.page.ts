@@ -164,5 +164,11 @@ export class Tab2Page implements OnInit {
     )
   }
 
+  reset(){
+  this.selectedManufacturer = "";
+  this.selectedModel = "";
+  this.selectedColor = "";
+  this.checkedColors  = [];
+  }
 
 }
