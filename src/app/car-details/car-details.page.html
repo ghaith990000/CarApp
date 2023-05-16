@@ -91,4 +91,21 @@
       </div>
 
     </div>
+    <div class="rating">
+
+    </div>
+    <div class="comments">
+      <h2>Comments</h2>
+      <div class="new-comment">
+        <ion-input class="commentInput" type="text" [(ngModel)]="newComment"></ion-input>
+        <ion-button (click)="addNewComment()">
+          <ion-icon name="send-sharp"></ion-icon>
+        </ion-button>
+      </div>
+      <ion-list>
+        <ion-item>
+
+        </ion-item>
+      </ion-list>
+    </div>
 </ion-content>

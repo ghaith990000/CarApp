@@ -28,6 +28,14 @@ export interface Car {
   vatPrice: number;
   imageUrls: string[];
 }
+
+export interface Comment {
+  id?: string;
+  carId: string;
+  userId: string;
+  text: string;
+  createdAt: Date;
+}
 export interface Showroom {
   id?: string;
   title: string;
@@ -75,6 +83,21 @@ export class ShowroomService {
       description: showroom.description,
       imageUrl: showroom.imageUrl,
     });
+  }
+
+  addComment(comment: Comment): Promise<Comment> {
+    return new Promise((resolve, reject)=>{
+      if(!comment.text){
+        return('Comment text cannot be empty.');
+        return;
+      }
+
+      return this.afs.collection('comments').add(comment).then(() => {
+        resolve(comment);
+      }).catch(error => {
+        reject(error);
+      })
+    })
   }
 
   updateShowroom(id: string, showroom: Showroom): Promise<void>{
