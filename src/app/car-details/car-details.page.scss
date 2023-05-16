@@ -1,0 +1,31 @@
+ion-slides {
+  width: 100%;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.feature {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.feature-txt {
+  font-size: 1rem;
+}
+
+.info-row {
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.info-row:nth-of-type(even){
+  background-color: aquamarine;
+}
+.info-row:nth-of-type(odd){
+  background-color: rgb(249, 250, 250);
+}
