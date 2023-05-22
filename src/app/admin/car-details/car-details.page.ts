@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ShowroomService } from 'src/app/services/showroom.service';
 import { Car } from 'src/app/services/showroom.service';
+import { UtilityService } from 'src/app/services/utility.service';
 @Component({
   selector: 'app-car-details',
   templateUrl: './car-details.page.html',
@@ -11,7 +12,7 @@ export class CarDetailsPage implements OnInit {
   rating: number =0;
   comment: string ="";
   ratingsAndComments: any[] = [];
-  
+
   car: Car = {} as Car;
   showroomId: string;
   carId: string;
@@ -24,7 +25,7 @@ export class CarDetailsPage implements OnInit {
       toggle: true,
     }
   };
-  constructor(public showroomSrv: ShowroomService, public ActRoute: ActivatedRoute) {
+  constructor(public utilitySrv:UtilityService ,public showroomSrv: ShowroomService, public ActRoute: ActivatedRoute) {
     this.showroomId = this.ActRoute.snapshot.paramMap.get('showroomId') ?? "";
     this.carId = this.ActRoute.snapshot.paramMap.get('carId') ?? "";
     this.getRatingsAndComments();
@@ -33,6 +34,16 @@ export class CarDetailsPage implements OnInit {
   ngOnInit() {
     this.loadCar(this.showroomId, this.carId);
 
+
+  }
+
+  onSelectChange(){
+    this.showroomSrv.updateCarCategory(this.showroomId, this.carId, this.car.category).then(()=>{
+      console.log(`Car category updated successfully`);
+      this.utilitySrv.presentToast("Car category updated successfully", 3000, 'bottom', 'success')
+    }).catch((error)=> {
+      console.log(`Error updating car category: `, error);
+    })
 
   }
 

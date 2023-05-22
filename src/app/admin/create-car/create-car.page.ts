@@ -22,6 +22,7 @@ export class CreateCarPage implements OnInit {
     model: "",
     color: "",
     mileage: 0,
+    category: "forsale",
     engineSpecifications: {
       horsepower: 0,
       torque:  0,
@@ -187,7 +188,7 @@ export class CreateCarPage implements OnInit {
       console.log(this.car.imageUrls);
       await this.showroomSrv.createCar(this.showroomId, this.car);
       this.utilitySrv.presentToast("Created Car Successfully", 5000, "bottom", "success");
-      this.router.navigateByUrl("/admin/showroom-details/"+this.showroomId);
+      this.router.navigateByUrl("/admin/showrooms/showroom-details/"+this.showroomId);
     }catch(error){
       this.utilitySrv.presentToast("Error Creating Car", 5000, "bottom", "failure");
     }

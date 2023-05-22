@@ -47,6 +47,14 @@
       <ion-label position="floating">Number of seats:</ion-label>
       <ion-input type="number" [(ngModel)]="car.numberOfSeats"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label position="floating">Change Status</ion-label>
+      <ion-select [(ngModel)]="car.category">
+        <ion-select-option value="forsale">For Sale</ion-select-option>
+        <ion-select-option value="sold">Sold</ion-select-option>
+        <ion-select-option value="history">History</ion-select-option>
+      </ion-select>
+    </ion-item>
     <ion-item-group>
       <ion-item-divider>
         <ion-label>Specification and features</ion-label>

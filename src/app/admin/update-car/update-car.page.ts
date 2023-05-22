@@ -15,6 +15,7 @@ export class UpdateCarPage implements OnInit {
     manufacturer: "",
     model: "",
     color: "",
+    category: "",
     showroomId: "",
     mileage: 0,
     engineSpecifications: {

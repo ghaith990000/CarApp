@@ -89,6 +89,12 @@
         <ion-icon  name="checkmark-circle" style="color: green; margin-right: 20px; font-size: 1.5rem"></ion-icon>
         <h3 class="feature-txt">Blind Spot Monitor</h3>
       </div>
+
+      <ion-select placeholder="{{car.category}}" [(ngModel)]="car.category" (ionChange)="onSelectChange()">
+          <ion-select-option *ngIf="car.category === 'forsale'" value="forsale">For Sale</ion-select-option>
+          <ion-select-option *ngIf="car.category === 'forsale' || car.category ==='sold'" value="sold">Sold</ion-select-option>
+          <ion-select-option *ngIf="car.category === 'sold' || car.category ==='history'" value="history">History</ion-select-option>
+      </ion-select>
       <ion-list>
         <ion-item>
           <ion-label>Rating:</ion-label>
@@ -113,8 +119,8 @@
         </ion-item>
       </ion-list>
     </div>
-    
 
-    
+
+
 <br><br>
 </ion-content>

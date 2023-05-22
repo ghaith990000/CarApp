@@ -9,6 +9,7 @@ export interface Car {
   id?:string;
   showroomId: string;
   type: string;
+  category: string;
   manufacturer: string;
   model: string;
   color: string;
@@ -206,6 +207,15 @@ export class ShowroomService {
     }
   }
 
+  async updateCarCategory(showroomId: string, carId: string, newCategory: string): Promise<void>{
+    try {
+      const carData = {category: newCategory};
+      await this.afs.collection('showrooms').doc(showroomId).collection<Car>('cars').doc(carId).update(carData)
+    }catch(err){
+      console.log(`Error updating car category: `, err);
+    }
+  }
+
   updateCarWithImages(showroomId: any, carId: any){
     const showroomRef = this.showroomCollection.doc(showroomId);
     const carsCollection = showroomRef.collection<Car>('cars');
@@ -213,7 +223,7 @@ export class ShowroomService {
   }
 
   async submitRating(rating: number , comment: string, carId: any) {
-    const userId = await this.auth.getUserID(); 
+    const userId = await this.auth.getUserID();
     const timestamp = new Date().getTime();
 
     try {
@@ -230,9 +240,9 @@ export class ShowroomService {
       console.error('Error submitting rating', error);
     }
   }
-  
+
   getRatingsAndComments(): Observable<any[]> {
-    return this.afs.collection('ratings').valueChanges(); 
+    return this.afs.collection('ratings').valueChanges();
   }
 
 }
