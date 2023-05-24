@@ -2,11 +2,11 @@
   <ion-toolbar color="secondary">
     <ion-title>      Search   </ion-title>
   </ion-toolbar>
-  <ion-searchbar placeholder="Model Car"></ion-searchbar>
+  <!-- <ion-searchbar placeholder="Model Car"></ion-searchbar> -->
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button (click)="toggleFilter()">
+  <ion-button color="secondary" (click)="toggleFilter()">
     <ion-icon name="filter-outline"></ion-icon>
   </ion-button>
   <div class="filter" *ngIf="openFilter">
@@ -41,7 +41,8 @@
             <ion-icon slot="end" name="cash-outline"></ion-icon>
           </ion-range>
         </div>
-        <ion-button (click)="onSearch()">Apply Filter</ion-button>
+        <ion-button color="secondary" (click)="onSearch()">Apply Filter</ion-button>
+        <ion-button color="secondary" (click)="reset()">Reset</ion-button>
   </div>
   <div class="search-container">
     <div *ngIf="filteredResults !== 0">
