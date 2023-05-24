@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar color="secondary">
+    <ion-button color="light" fill="clear" routerLink="../../">    
+      <ion-icon name="chevron-back-circle"></ion-icon>
+    </ion-button>
     <ion-title>showroom-details</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +16,7 @@
     <div class="car-wrapper">
       <div class="car-list-header">
         <h2 class="car-heading">Cars</h2>
-        <ion-button fill="outline" class="addCarBtn" (click)="navToCreateCar()">
+        <ion-button color="secondary" fill="outline" class="addCarBtn" (click)="navToCreateCar()">
           <ion-icon name="add"></ion-icon>
           New Car
         </ion-button>
@@ -31,7 +34,7 @@
                 </div>
               </div>
               <h1 class="info-title">{{car.manufacturer}} • {{car.model}} • {{car.type}}</h1>
-              <ion-badge class="car-price">{{car.price}} BD</ion-badge>
+              <ion-badge class="car-price" color="secondary">{{car.price}} BD</ion-badge>
             </div>
           </ion-card-content>
           <div class="">
